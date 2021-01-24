@@ -66,11 +66,19 @@ var _ = Describe("Server handler test suite", func() {
 
 	Context("happy path cases", func() {
 		var ports []entity.PortInfo
+		var province, timezone, code string
+
 		BeforeEach(func() {
+			province = "Province"
+			timezone = "Timezone"
+			code = "Code"
 			ports = []entity.PortInfo{
 				{
 					Name:     "PortY",
 					Unlocs: []string{"KeyY"},
+					Province: &province,
+					Timezone: &timezone,
+					Code: &code,
 				},
 			}
 			portRepository.EXPECT().GetPorts().Return(ports, nil)

@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package port;
+option go_package=".;api";
+
+service PortService {
+    rpc StorePorts (MultiplePortsInput) returns (AddPortEntryResponse) {}
+    rpc GetAllPorts (EmptyParams) returns (GetAllPortsResponse) {}
+}
+
+message MultiplePortsInput {
+    repeated Port ports = 1;
+}
+
+message AddPortEntryResponse {
+    string message = 1;
+}
+
+message EmptyParams {}
+
+message GetAllPortsResponse {
+    repeated Port ports = 1;
+}
+
+
+message Port {
+    string name = 1;
+    string city = 2;
+    string country = 3;
+    repeated google.protobuf.Any alias = 4;
+    repeated google.protobuf.Any regions = 5;
+    repeated float coordinates = 6;
+    string province = 7;
+    string timezone = 8;
+    repeated string unlocs = 9;
+    string code = 10;
+}

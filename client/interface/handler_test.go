@@ -87,7 +87,6 @@ var _ = Describe("Handler test suite", func() {
 			portHandler.StorePorts(c)
 
 			Expect(rec.Code).To(BeEquivalentTo(http.StatusOK))
-			Expect(rec.Body).To(BeEquivalentTo("Stored 2 port elements"))
 		})
 
 	})
