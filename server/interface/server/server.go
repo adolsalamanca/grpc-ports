@@ -14,8 +14,8 @@ import (
 
 const (
 	SuccessCreateMessage = "Successfully added ports to the list"
-	InternalServerError  = common.Error("TodoList storage error")
-	NotFoundError        = common.Error("TodoList was not found error")
+	InternalServerError  = common.Error("Port storage error")
+	NotFoundError        = common.Error("Port not found error")
 )
 
 type Server struct {
@@ -36,7 +36,7 @@ func (s *Server) Serve(port uint) {
 		log.Fatalf("error while trying to listen on tcp connections, %s", err)
 	}
 	log.Printf("Server listening in port %d", port)
-	api.RegisterTodolistServer(s.gRpcServ, s)
+	api.RegisterPortServiceServer(s.gRpcServ, s)
 
 	err = s.gRpcServ.Serve(l)
 	if err != nil {

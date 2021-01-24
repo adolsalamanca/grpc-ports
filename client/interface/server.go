@@ -2,6 +2,7 @@ package _interface
 
 import (
 	"context"
+	"github.com/adolsalamanca/ports/client/domain/repository"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
@@ -17,8 +18,8 @@ type Server struct {
 }
 
 // Start creates an instance of Echo, high performance, extensible, minimalist Go web framework.
-func (s Server) Start(ctx context.Context) error {
-	e := s.echo()
+func (s Server) Start(ctx context.Context, repository repository.PortRepository) error {
+	e := s.echo(repository)
 
 	go func() {
 		<-ctx.Done()
@@ -31,12 +32,12 @@ func (s Server) Start(ctx context.Context) error {
 	return e.Start(s.Addr())
 }
 
-func (s Server) echo() *echo.Echo {
+func (s Server) echo(repository repository.PortRepository) *echo.Echo {
 	log.Printf("Http listener running on %s", s.Addr())
 	e := echo.New()
 	e.Use(middleware.Recover())
 
-	p := PortHandler{}
+	p := NewPortHandler(repository)
 
 	e.GET("/ports", p.GetPorts)
 	e.POST("/ports", p.StorePorts)

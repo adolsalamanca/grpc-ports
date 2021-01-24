@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"github.com/adolsalamanca/ports/client/infrastructure/persistence"
 	"github.com/adolsalamanca/ports/client/interface"
 	"log"
 	"os"
@@ -17,6 +18,7 @@ func main() {
 
 	timeout := flag.Uint("timeout", 5, "Client timeout in seconds to receive data from ports")
 	port := flag.Uint("port", 3001, "Client port to receive data from ports")
+	grpcServerPort := flag.Uint("grpc-server-port", 7777, "Port of gRpc server")
 	host := flag.String("host", "0.0.0.0", "Client host to receive data from ports")
 	flag.Parse()
 
@@ -25,7 +27,9 @@ func main() {
 		Host:    *host,
 		Port:    *port,
 	}
-	if err := s.Start(context.Background()); err != nil {
+
+	repository := persistence.NewPortgRpcPersistence(*grpcServerPort)
+	if err := s.Start(context.Background(), repository); err != nil {
 		log.Fatalf("cannot start server due to %s", err)
 	}
 
