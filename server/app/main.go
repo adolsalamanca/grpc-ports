@@ -2,28 +2,29 @@ package main
 
 import (
 	"context"
+	"flag"
+	"github.com/adolsalamanca/ports/server/infrastructure/persistence"
+	"github.com/adolsalamanca/ports/server/interface/server"
+	"google.golang.org/grpc"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 )
 
 func main() {
 	_, cancelFunc := context.WithCancel(context.Background())
 	go arrangeShutdown(cancelFunc)
 
-	go func() {
-		for {
-			t := time.NewTimer(2 * time.Second)
-			<-t.C
-			log.Printf("Server app running...")
-		}
+	log.Printf("Server app starting...")
+	port := flag.Uint("port", 7777, "Port of gRpc server")
+	flag.Parse()
 
-	}()
+	grpcServer := grpc.NewServer()
+	portsRepository := persistence.NewPortsMemoryRepository()
+	s := server.NewServer(grpcServer, portsRepository)
 
-	waitChan := make(chan bool,1)
-	<- waitChan
+	s.Serve(*port)
 }
 
 func arrangeShutdown(cancelFunc context.CancelFunc) {
