@@ -3,11 +3,12 @@ package persistence
 import (
 	"context"
 	"fmt"
-	"github.com/adolsalamanca/ports/client/domain/entity"
-	"github.com/adolsalamanca/ports/client/infrastructure/api"
-	"github.com/adolsalamanca/ports/client/infrastructure/common"
-	"google.golang.org/grpc"
 	"log"
+
+	"github.com/adolsalamanca/grpc-ports/client/domain/entity"
+	"github.com/adolsalamanca/grpc-ports/client/infrastructure/api"
+	"github.com/adolsalamanca/grpc-ports/client/infrastructure/common"
+	"google.golang.org/grpc"
 )
 
 const (
@@ -18,8 +19,8 @@ type PortgRpcPersistence struct {
 	serviceClient api.PortServiceClient
 }
 
-func NewPortgRpcPersistence(port uint) *PortgRpcPersistence {
-	conn, err := grpc.Dial(fmt.Sprintf(":%d", port), grpc.WithInsecure())
+func NewPortgRpcPersistence(host string, port uint) *PortgRpcPersistence {
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", host, port), grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("could not dial server, %s", err)
 	}
@@ -77,4 +78,3 @@ func (p PortgRpcPersistence) GetAllPorts() ([]entity.PortInfo, error) {
 
 	return allPorts, nil
 }
-

@@ -2,12 +2,12 @@ package server_test
 
 import (
 	"context"
-	"github.com/adolsalamanca/ports/server/infrastructure/api"
-	"github.com/adolsalamanca/ports/server/domain/entity"
-	"github.com/adolsalamanca/ports/server/domain/repository/mocks"
-	"github.com/adolsalamanca/ports/server/infrastructure/common"
-	"github.com/adolsalamanca/ports/server/infrastructure/persistence"
-	"github.com/adolsalamanca/ports/server/interface/server"
+	"github.com/adolsalamanca/grpc-ports/server/infrastructure/api"
+	"github.com/adolsalamanca/grpc-ports/server/domain/entity"
+	"github.com/adolsalamanca/grpc-ports/server/domain/repository/mocks"
+	"github.com/adolsalamanca/grpc-ports/server/infrastructure/common"
+	"github.com/adolsalamanca/grpc-ports/server/infrastructure/persistence"
+	"github.com/adolsalamanca/grpc-ports/server/interface/server"
 	"github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

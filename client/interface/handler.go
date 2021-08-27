@@ -2,9 +2,9 @@ package _interface
 
 import (
 	"fmt"
-	"github.com/adolsalamanca/ports/client/domain/entity"
-	"github.com/adolsalamanca/ports/client/domain/repository"
-	"github.com/adolsalamanca/ports/client/infrastructure/common"
+	"github.com/adolsalamanca/grpc-ports/client/domain/entity"
+	"github.com/adolsalamanca/grpc-ports/client/domain/repository"
+	"github.com/adolsalamanca/grpc-ports/client/infrastructure/common"
 	"github.com/labstack/echo/v4"
 	"net/http"
 )

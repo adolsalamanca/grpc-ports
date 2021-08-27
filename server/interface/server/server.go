@@ -3,13 +3,14 @@ package server
 import (
 	context "context"
 	"fmt"
-	"github.com/adolsalamanca/ports/server/domain/entity"
-	"github.com/adolsalamanca/ports/server/domain/repository"
-	"github.com/adolsalamanca/ports/server/infrastructure/api"
-	"github.com/adolsalamanca/ports/server/infrastructure/common"
-	"google.golang.org/grpc"
 	"log"
 	"net"
+
+	"github.com/adolsalamanca/grpc-ports/server/domain/entity"
+	"github.com/adolsalamanca/grpc-ports/server/domain/repository"
+	"github.com/adolsalamanca/grpc-ports/server/infrastructure/api"
+	"github.com/adolsalamanca/grpc-ports/server/infrastructure/common"
+	"google.golang.org/grpc"
 )
 
 const (

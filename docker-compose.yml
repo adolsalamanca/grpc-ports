@@ -3,21 +3,21 @@ version: '3'
 services:
   server:
     build:
-      context: server/
+      context: server/.
       dockerfile: Dockerfile
     ports:
-      - 3002:3002
+      - "3002:3002"
     networks:
       - port-network
 
   client:
     build:
-      context: client/
+      context: client/.
       dockerfile: Dockerfile
     depends_on:
       - server
     ports:
-      - 3001:3001
+      - "3001:3001"
     networks:
       - port-network
 

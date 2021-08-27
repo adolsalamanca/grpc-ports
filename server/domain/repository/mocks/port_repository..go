@@ -5,7 +5,7 @@
 package mocks
 
 import (
-	entity "github.com/adolsalamanca/ports/server/domain/entity"
+	entity "github.com/adolsalamanca/grpc-ports/server/domain/entity"
 	gomock "github.com/golang/mock/gomock"
 	reflect "reflect"
 )

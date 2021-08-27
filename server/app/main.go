@@ -3,13 +3,14 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/adolsalamanca/ports/server/infrastructure/persistence"
-	"github.com/adolsalamanca/ports/server/interface/server"
-	"google.golang.org/grpc"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/adolsalamanca/grpc-ports/server/infrastructure/persistence"
+	"github.com/adolsalamanca/grpc-ports/server/interface/server"
+	"google.golang.org/grpc"
 )
 
 func main() {
@@ -17,7 +18,7 @@ func main() {
 	go arrangeShutdown(cancelFunc)
 
 	log.Printf("Server app starting...")
-	port := flag.Uint("port", 7777, "Port of gRpc server")
+	port := flag.Uint("port", 3002, "Port of gRpc server")
 	flag.Parse()
 
 	grpcServer := grpc.NewServer()

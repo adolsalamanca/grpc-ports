@@ -10,5 +10,5 @@ FROM alpine:latest as runner
 COPY --from=builder /src/client /opt/client/
 WORKDIR /opt/client
 
-ENTRYPOINT ["./client"]
+ENTRYPOINT ["./client", "-grpc_server_host=grpc-ports_server_1"]
 

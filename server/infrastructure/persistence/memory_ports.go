@@ -1,8 +1,8 @@
 package persistence
 
 import (
-	"github.com/adolsalamanca/ports/server/domain/entity"
-	"github.com/adolsalamanca/ports/server/infrastructure/common"
+	"github.com/adolsalamanca/grpc-ports/server/domain/entity"
+	"github.com/adolsalamanca/grpc-ports/server/infrastructure/common"
 )
 
 const (

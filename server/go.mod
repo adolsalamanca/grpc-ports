@@ -1,4 +1,4 @@
-module github.com/adolsalamanca/ports/server
+module github.com/adolsalamanca/grpc-ports/server
 
 go 1.15
 

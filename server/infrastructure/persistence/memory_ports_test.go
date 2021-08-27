@@ -1,8 +1,8 @@
 package persistence_test
 
 import (
-	"github.com/adolsalamanca/ports/server/domain/entity"
-	"github.com/adolsalamanca/ports/server/infrastructure/persistence"
+	"github.com/adolsalamanca/grpc-ports/server/domain/entity"
+	"github.com/adolsalamanca/grpc-ports/server/infrastructure/persistence"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

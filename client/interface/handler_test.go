@@ -1,10 +1,10 @@
 package _interface_test
 
 import (
-	"github.com/adolsalamanca/ports/client/domain/entity"
-	"github.com/adolsalamanca/ports/client/domain/repository/mocks"
-	"github.com/adolsalamanca/ports/client/infrastructure/common"
-	_interface "github.com/adolsalamanca/ports/client/interface"
+	"github.com/adolsalamanca/grpc-ports/client/domain/entity"
+	"github.com/adolsalamanca/grpc-ports/client/domain/repository/mocks"
+	"github.com/adolsalamanca/grpc-ports/client/infrastructure/common"
+	_interface "github.com/adolsalamanca/grpc-ports/client/interface"
 	"github.com/golang/mock/gomock"
 	"github.com/labstack/echo/v4"
 	. "github.com/onsi/ginkgo"

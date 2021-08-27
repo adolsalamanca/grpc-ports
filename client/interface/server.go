@@ -2,7 +2,7 @@ package _interface
 
 import (
 	"context"
-	"github.com/adolsalamanca/ports/client/domain/repository"
+	"github.com/adolsalamanca/grpc-ports/client/domain/repository"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
@@ -39,8 +39,8 @@ func (s Server) echo(repository repository.PortRepository) *echo.Echo {
 
 	p := NewPortHandler(repository)
 
-	e.GET("/ports", p.GetPorts)
-	e.POST("/ports", p.StorePorts)
+	e.GET("/grpc-ports", p.GetPorts)
+	e.POST("/grpc-ports", p.StorePorts)
 
 	return e
 }
