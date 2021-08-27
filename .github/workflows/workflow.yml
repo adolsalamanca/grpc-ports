@@ -2,9 +2,9 @@ name: Go
 
 on:
   push:
-    branches: [ master, dev]
+    branches: [ main, dev]
   pull_request:
-    branches: [ master, dev]
+    branches: [ main, dev]
 
 jobs:
 
@@ -13,39 +13,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Set up Go 1.x
-      uses: actions/setup-go@v2
-      with:
-        go-version: ^1.15
-      id: go
+      - name: Set up Go 1.17
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+        id: go
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v2
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
 
-    - name: Get client dependencies
-      run: |
-        cd client && go get -v -t -d ./...
-        if [ -f Gopkg.toml ]; then
-            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-            dep ensure
-        fi
+      - name: Get client dependencies
+        run: |
+          cd client && go get -v -t -d ./...
+          if [ -f Gopkg.toml ]; then
+              curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+              dep ensure
+          fi
 
-    - name: Build client
-      run: cd client && go build -v ./...
+      - name: Test client
+        run: cd client && go test -v ./...
 
-    - name: Test client
-      run: cd client && go test -v ./...
+      - name: Get server dependencies
+        run: |
+          cd server && go get -v -t -d ./...
+          if [ -f Gopkg.toml ]; then
+              curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+              dep ensure
+          fi
 
-    - name: Get server dependencies
-      run: |
-        cd server && go get -v -t -d ./...
-        if [ -f Gopkg.toml ]; then
-            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-            dep ensure
-        fi
-
-    - name: Build server
-      run: cd server && go build -v ./...
-
-    - name: Test server
-      run: cd server && go test -v ./...
+      - name: Test server
+        run: cd server && go test -v ./...
