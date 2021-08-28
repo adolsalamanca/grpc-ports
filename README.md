@@ -23,13 +23,13 @@ I have followed TDD and made some mocks to test everything I needed.
 From the root of repository:
 ```sh
 cd server
-go run app/main.go
+go run cmd/main.go
 ```
 
 In a new terminal, from the root of repository again:
 ```sh
 cd client
-go run app/main.go
+go run cmd/main.go
 ```
 
 

@@ -3,7 +3,7 @@ FROM golang:alpine as builder
 COPY . /src
 WORKDIR /src
 
-RUN go build -o server app/main.go
+RUN go build -o server cmd/main.go
 
 FROM alpine:latest as runner
 
